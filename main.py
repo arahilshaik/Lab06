@@ -30,10 +30,29 @@ def decode(pw):
 
 
 def main():
-    password = input("Give me a password: ")
-    encoded_pw = encoder(password)
-    print(encoded_pw)
-    print(decode(encoded_pw))
+    encoded_pw = None
+    while True:
+        print("Menu")
+        print("-------------")
+        print("1. Encode")
+        print("2. Decode")
+        print("3. Quit")
+        option = int(input("\nPlease enter an option: "))
+
+        if option == 1:
+            pw = input("Please enter your password to encode: ")
+            encoded_pw = encoder(pw)
+            print("Your password has been encoded and stored!\n")
+
+        elif option == 2:
+            if encoded_pw is None:
+                print("No password stored.")
+                continue
+            decoded_pw = decode(encoded_pw)
+            print(f"The encoded password is {encoded_pw}, and the original password is {decoded_pw}.")
+
+        elif option == 3:
+            break
 
 
 if __name__ == '__main__':
